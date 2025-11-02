@@ -1,0 +1,13 @@
+# Directorio de artefactos de Maven
+target/
+
+# Archivos de configuración de NetBeans
+nbproject/private/
+*.orig
+*.swp
+*.bak
+nb-configuration.xml
+
+# Logs y otros archivos temporales
+logs/
+*.log
