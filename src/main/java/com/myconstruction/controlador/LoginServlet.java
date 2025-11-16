@@ -1,4 +1,3 @@
-
 package com.myconstruction.controlador;
 
 import java.io.IOException;
@@ -13,8 +12,8 @@ public class LoginServlet extends HttpServlet {
     
     // --- Configuración de la Conexión a la Base de Datos ---
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/myconstruction_db";
-    private static final String JDBC_USER = "root"; // ¡Ajusta tu usuario de DB!
-    private static final String JDBC_PASSWORD = "your_db_password"; // ¡Ajusta tu contraseña de DB!
+    private static final String JDBC_USER = "root"; // usuario DB
+    private static final String JDBC_PASSWORD = "your_db_password"; // contraseña DB
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -25,13 +24,13 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         
         try {
-            // Cargar el driver JDBC (no siempre es necesario en versiones modernas, pero es buena práctica)
+            // Cargar el driver JDBC 
             // Class.forName("com.mysql.cj.jdbc.Driver"); 
             
             // 2. Establecer la conexión con la DB
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 
-                // 3. Preparar la consulta SQL (uso de PreparedStatement para seguridad)
+                // 3. Preparar la consulta SQL 
                 String sql = "SELECT nombre FROM usuarios WHERE username = ? AND password_hash = ?";
                 
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
